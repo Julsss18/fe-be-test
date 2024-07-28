@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+    db:
+      image: mysql:8.4
+      restart: always
+      environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: true
+        MYSQL_DATABASE: coffeeshop
+      ports:
+        - 3307:3306
+      volumes: 
+        - ./backend/init:/docker-entrypoint-initdb.d
+        - coffeeshop-data:/var/lib/mysql
+    api:
+      build:
+        context: .
+        dockerfile: ./backend/Dockerfile
+      ports:
+        - 9001:8080
+    coffeeshop:
+      build:
+        context: .
+        dockerfile: ./cafe-employee/Dockerfile
+      ports:
+        - 3000:3000
+volumes:
+  coffeeshop-data:

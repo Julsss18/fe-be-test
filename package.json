@@ -1,0 +1,12 @@
+{
+  "name": "fe-be-test",
+  "version": "1.0.0",
+  "description": "coffeeshop-test",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-packages": "concurrently \"cd ./cafe-employee && npm install\" \"cd ./backend && npm install\"",
+    "dev": "concurrently \"cd ./cafe-employee && npm run dev\" \"cd ./backend && npm run dev\""
+  },
+  "author": "",
+  "license": "ISC"
+}
